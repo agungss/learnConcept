@@ -52,12 +52,22 @@ public class learnConcept {
                 return Integer.compare(b.getValue(), a.getValue());
             });
 
+            // 🔹 Prepare output lines
+            List<String> outputLines = new ArrayList<>();
+
             for (Map.Entry<String, Integer> e : list) {
-                System.out.println(e.getKey() + " " + e.getValue());
+                String line = e.getKey() + " " + e.getValue();
+                System.out.println(line);     // tampil di layar
+                outputLines.add(line);        // simpan ke file
             }
 
+            // 🔹 Write to result.txt
+            Files.write(Path.of("result.txt"), outputLines);
+
+            System.out.println("\nResult saved to result.txt");
+
         } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }
